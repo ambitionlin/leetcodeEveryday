@@ -1,0 +1,15 @@
+class Solution {
+    public List<Integer> getRow(int rowIndex) {
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        if(rowIndex==0){
+            return list;
+        }
+        List<Integer> beforelist = getRow(rowIndex-1);
+        for(int i=1;i<=rowIndex-1;i++){
+            list.add(beforelist.get(i-1)+ beforelist.get(i));
+        }
+        list.add(1);
+        return list;
+    }
+}
