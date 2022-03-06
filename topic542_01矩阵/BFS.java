@@ -1,4 +1,7 @@
-class Solution {
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+class Main {
     private static final int[][] Directions = new int[][]{{0,1},{0,-1},{1,0},{-1,0}};
     private static int m,n;
     private int level = 0;
