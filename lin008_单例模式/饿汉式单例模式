@@ -1,0 +1,23 @@
+//优点：在类装载时创建，可保证线程安全
+//缺点：如果构造方法中存在过多处理，会导致加载变慢
+public class SingleTon{
+    private SingleTon(){
+    }
+    private static SingleTon instance = new SingleTon();
+    public static SingleTon getInstance(){
+        return instance;
+    }
+}
+
+//静态代码块方式的饿汉式单例模式
+public class SingleTon2{
+    private SingleTon2(){
+    }
+    private static SingleTon2 instance2 = null;
+    static {
+        instance2 = new SingleTon2();
+    }
+    public static SingleTon2 getInstance(){
+        return instance2;
+    }
+}

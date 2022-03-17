@@ -12,7 +12,7 @@ class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> ret = new ArrayList<>();
         if(root==null) 
-	        return ret;
+	return ret;
         Stack<TreeNode> stack = new Stack<>();
         TreeNode cur = root;
         while(cur!=null || !stack.isEmpty()){

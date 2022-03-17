@@ -1,0 +1,17 @@
+//枚举式单例模式，与懒汉式单例模式相比、线程更安全，与饿汉式单例模式相比、实际调用时才初始化
+public class SingleTon{
+    private SingleTon(){}
+    public static SingleTon getInstance(){
+        return SingleTonEnum.INSTANCE.getInstance();
+    }
+    private enum SingleTonEnum{
+        INSTANCE;
+        private SingleTon singleTon;
+        SingleTonEnum(){ //jvm保证只调用一次
+            singleTon = new SingleTon();
+        }
+        private SingleTon getInstance(){
+            return singleTon;
+        }
+    }
+}

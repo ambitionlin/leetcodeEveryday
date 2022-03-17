@@ -1,0 +1,57 @@
+//懒汉式单例模式是最常见的单例模式，单例实例在第一次使用时进行创建
+// 多线程可能运行多次就new多次，线程不安全
+public class SingleTon{
+    private SingleTon(){}   //私有构造方法保证了该类不会被实例化，从而保证了单例类只有一个实例
+    private static SingleTon instance = null;
+    public static SingleTon getInstance(){
+        if(instance == null){
+            instance = new SingleTon();
+        }
+        return instance;
+    }
+}
+
+//线程安全的懒汉式单例模式，同一时刻只有一个线程可以访问，失去并发性。
+public class SingleTon2{
+    private SingleTon2(){}   //私有构造方法
+    private static SingleTon2 instance = null;   //私有静态变量
+    public static synchronized SingleTon2 getInstance(){    //共有静态方法
+        if(instance == null){
+            instance = new SingleTon2();
+        }
+        return instance;
+    }
+}
+
+//懒汉式单例模式（双重同步锁代理模式） 由于多线程下可能指令重排序，因此线程不安全
+public class SingleTon3{
+    private SingleTon3(){}
+    private static SingleTon3 instance = null;
+    public static SingleTon3 getInstance(){
+        if(instance==null){
+            synchronized (SingleTon3.class){
+                if(instance==null){
+                    instance = new SingleTon3();
+                }
+            }
+        }
+        return instance;
+    }
+}
+
+//线程安全的懒汉式双重同步锁单例模式
+public class SingleTon4{
+    private SingleTon4(){}
+    private static volatile SingleTon4 instance = null;
+    public static SingleTon4 getInstance(){
+        if(instance==null){
+            synchronized (SingleTon4.class){
+                if (instance==null){
+                    instance = new SingleTon4();
+                }
+            }
+        }
+        return instance;
+    }
+}
+
