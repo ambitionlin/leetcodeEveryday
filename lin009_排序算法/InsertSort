@@ -1,15 +1,16 @@
 //插入排序 时间复杂度O(N*N)，空间复杂度O(1) 最好情况是O(N)
-public class InsertSort{
+public class InsertSort {
     public static void main(Int[] array) {
-        if(array==null || array.length<2) return;
+        if (array == null || array.length < 2) return;
         //从前往后来依次放当前遍历到的最小的数据
-        for(int i=1;i<array.length;i++){
-            for(int j=i-1;j>=0&&array[j]>array[j+1];j--){
-                swap(array,j,j+1);
+        for (int i = 1; i < array.length; i++) {
+            for (int j = i - 1; j >= 0 && array[j] > array[j + 1]; j--) {
+                swap(array, j, j + 1);
             }
         }
     }
-    public static void swap(int[] array,int i, int j){
+
+    public static void swap(int[] array, int i, int j) {
         int tmp = array[i];
         array[i] = array[j];
         array[j] = tmp;
