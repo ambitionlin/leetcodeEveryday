@@ -1,0 +1,39 @@
+
+//快速排序 时间复杂度最好和平均O(NlogN),最差O(N*N),额外空间复杂度O(logN)
+public class QuickSort {
+    public static void main(int[] array) {
+        if (array == null || array.length < 2) return;
+        quickSort(array, 0, array.length - 1);
+    }
+
+    public static void quickSort(int[] array, int L, int R) {
+        if (L < R) {
+            swap(array, L + (int) (Math.Random() * (R - L + 1)), R);
+            int[] p = partition(array, L, R);
+            quickSort(array, L, p[0] - 1);
+            quickSort(array, p[1] + 1, R);
+        }
+    }
+
+    public static int[] partition(int[] array, int L, int R) {
+        int less = L - 1, more = R;
+        while (L < more) {
+            if (array[L] < array[R]) {
+                swap(array, ++less, L++);
+            } else if (array[L] > array[R]) {
+                swap(array, --more, L);
+            } else {
+                L++;
+            }
+        }
+        swap(array, more, R);
+        return int[] { less + 1, more } ;
+    }
+
+    public static void swap(int[] arr, int i, int j) {
+        int tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
+    }
+
+}
