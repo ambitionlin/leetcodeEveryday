@@ -1,0 +1,15 @@
+//通过实现Runnable接口，实现run方法，接口的实现类的实例作为Thread的target作为参数传入带参的Thread构造函数，
+// 通过调用start()方法启动线程
+public class Thread2 {
+    public static void main(String[] args) {
+        Thread myThread = new Thread(new MyRunnable());
+        myThread.start();
+    }
+}
+
+class MyRunnable implements Runnable {
+    @Override
+    public void run() {
+        System.out.println(Thread.currentThread().getName() + "-->我是通过实现接口的方式实现的");
+    }
+}
